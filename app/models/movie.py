@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from sqlalchemy import BigInteger, DateTime, Float, Integer, String, Text
+from sqlalchemy import BigInteger, DateTime, Float, ForeignKey, Integer, String, Text, UniqueConstraint
 from sqlalchemy.dialects.postgresql import ARRAY
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
@@ -30,3 +30,28 @@ class Movie(TimestampMixin, Base):
     # 삭제 처리는 DB의 ON DELETE CASCADE에 맡겨 ORM이 FK를 NULL로 바꾸지 않게 한다.
     interactions = relationship("UserMovieInteraction", back_populates="movie", passive_deletes=True)
     stats = relationship("MovieStats", back_populates="movie", passive_deletes=True, uselist=False)
+    genre_rows = relationship(
+        "MovieGenre",
+        back_populates="movie",
+        cascade="all, delete-orphan",
+        passive_deletes=True,
+    )
+
+
+class MovieGenre(Base):
+    __tablename__ = "movie_genres"
+    __table_args__ = (
+        UniqueConstraint("movie_id", "genre", name="uq_movie_genres_movie_genre"),
+    )
+
+    id: Mapped[int] = mapped_column(BigInteger, primary_key=True)
+    movie_id: Mapped[int] = mapped_column(
+        BigInteger,
+        ForeignKey("movies.id", ondelete="CASCADE"),
+        index=True,
+        nullable=False,
+    )
+    genre: Mapped[str] = mapped_column(String(50), index=True, nullable=False)
+
+    # 장르 검색/추천은 별도 테이블을 기준으로 하지만 Movie에서 쉽게 접근하도록 관계를 둔다.
+    movie = relationship("Movie", back_populates="genre_rows")

@@ -38,7 +38,7 @@ class UserPreferenceScore(TimestampMixin, Base):
     # 같은 사용자에게 같은 취향값은 한 row만 두고 score를 누적한다.
     __table_args__ = (
         CheckConstraint(
-            "preference_type IN ('genre', 'actor', 'director', 'keyword', 'language')",
+            "preference_type IN ('genre', 'actor', 'director', 'keyword', 'language', 'character')",
             name="ck_user_preference_scores_preference_type",
         ),
         UniqueConstraint("user_id", "preference_type", "preference_value", name="uq_user_preference_scores_value"),

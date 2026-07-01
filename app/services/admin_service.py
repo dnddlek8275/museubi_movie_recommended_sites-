@@ -5,7 +5,7 @@ from sqlalchemy.orm import Session
 from app.core.exceptions import ServiceError
 from app.models.character import Character
 from app.models.interaction import UserMovieInteraction
-from app.models.movie import Movie
+from app.models.movie import Movie, MovieGenre
 from app.models.user import User
 from app.schemas.character import CreateCharacter, UpdateCharacter
 from app.schemas.movie import CreateMovie, UpdateMovie
@@ -39,7 +39,10 @@ def get_movie_or_404(db: Session, movie_id: int) -> Movie:
 
 def create_movie(db: Session, payload: CreateMovie) -> Movie:
     # 관리자 입력값으로 새 영화 row를 생성한다.
-    movie = Movie(**payload.model_dump())
+    movie_data = payload.model_dump()
+    genres = movie_data.pop("genres", None)
+    movie = Movie(**movie_data, genres=genres)
+    sync_movie_genres(movie, genres)
     db.add(movie)
     try:
         db.commit()
@@ -55,8 +58,13 @@ def update_movie(db: Session, movie_id: int, payload: UpdateMovie) -> Movie:
     # 선택적으로 전달된 필드만 사용해 영화 정보를 수정한다.
     movie = get_movie_or_404(db, movie_id)
     update_data = payload.model_dump(exclude_unset=True)
+    genres_was_sent = "genres" in update_data
+    genres = update_data.pop("genres", None)
     for field, value in update_data.items():
         setattr(movie, field, value)
+    if genres_was_sent:
+        movie.genres = genres
+        sync_movie_genres(movie, genres)
     try:
         db.commit()
     except IntegrityError as exc:
@@ -71,6 +79,27 @@ def delete_movie(db: Session, movie_id: int) -> None:
     movie = get_movie_or_404(db, movie_id)
     db.delete(movie)
     db.commit()
+
+
+def sync_movie_genres(movie: Movie, genres: list[str] | None) -> None:
+    # movies.genres와 movie_genres가 서로 다른 값을 갖지 않도록 저장 시점에 함께 갱신한다.
+    movie.genre_rows = [
+        MovieGenre(genre=genre)
+        for genre in normalize_movie_genres(genres)
+    ]
+
+
+def normalize_movie_genres(genres: list[str] | None) -> list[str]:
+    # CSV/API 입력에서 공백과 중복 장르를 제거해 movie_genres에 저장할 값을 만든다.
+    normalized: list[str] = []
+    seen: set[str] = set()
+    for genre in genres or []:
+        value = genre.strip()
+        if not value or value in seen:
+            continue
+        normalized.append(value)
+        seen.add(value)
+    return normalized
 
 
 def validate_movie_id(db: Session, movie_id: int | None) -> None:

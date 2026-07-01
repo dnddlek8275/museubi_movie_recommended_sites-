@@ -3,7 +3,7 @@ from app.models.admin import AdminAuditLog
 from app.models.character import Character
 from app.models.chat import ChatMessage, ChatRoom
 from app.models.interaction import MovieStats, UserMovieInteraction, UserPreferenceScore
-from app.models.movie import Movie
+from app.models.movie import Movie, MovieGenre
 from app.models.user import User, RefreshToken
 
 
@@ -15,6 +15,7 @@ __all__ = [
     "ChatMessage",
     "ChatRoom",
     "Movie",
+    "MovieGenre",
     "MovieStats",
     "User",
     "RefreshToken",
