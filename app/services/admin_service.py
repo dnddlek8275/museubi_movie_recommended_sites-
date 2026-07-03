@@ -3,7 +3,7 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
 from app.core.exceptions import ServiceError
-from app.models.character import Character
+from app.models.character import Character, CharacterAlias
 from app.models.interaction import UserMovieInteraction
 from app.models.movie import Movie, MovieGenre
 from app.models.user import User
@@ -126,9 +126,16 @@ def get_character_or_404(db: Session, character_id: int) -> Character:
 def create_character(db: Session, payload: CreateCharacter) -> Character:
     # 관리자 입력값으로 새 캐릭터 row를 생성한다.
     validate_movie_id(db, payload.movie_id)
-    character = Character(**payload.model_dump())
+    character_data = payload.model_dump()
+    aliases = character_data.pop("aliases", None)
+    character = Character(**character_data)
+    sync_character_aliases(character, aliases)
     db.add(character)
-    db.commit()
+    try:
+        db.commit()
+    except IntegrityError as exc:
+        db.rollback()
+        raise ServiceError("이미 존재하는 캐릭터 별칭입니다.", status_code=409) from exc
     db.refresh(character)
     return character
 
@@ -139,9 +146,17 @@ def update_character(db: Session, character_id: int, payload: UpdateCharacter) -
     update_data = payload.model_dump(exclude_unset=True)
     if "movie_id" in update_data:
         validate_movie_id(db, update_data["movie_id"])
+    aliases_was_sent = "aliases" in update_data
+    aliases = update_data.pop("aliases", None)
     for field, value in update_data.items():
         setattr(character, field, value)
-    db.commit()
+    if aliases_was_sent:
+        sync_character_aliases(character, aliases)
+    try:
+        db.commit()
+    except IntegrityError as exc:
+        db.rollback()
+        raise ServiceError("이미 존재하는 캐릭터 별칭입니다.", status_code=409) from exc
     db.refresh(character)
     return character
 
@@ -151,3 +166,24 @@ def delete_character(db: Session, character_id: int) -> None:
     character = get_character_or_404(db, character_id)
     db.delete(character)
     db.commit()
+
+
+def sync_character_aliases(character: Character, aliases: list[str] | None) -> None:
+    # 캐릭터 별칭은 /chat/auto 매핑 전용이므로 저장 시 공백/중복을 정리한다.
+    character.alias_rows = [
+        CharacterAlias(alias=alias)
+        for alias in normalize_character_aliases(aliases)
+    ]
+
+
+def normalize_character_aliases(aliases: list[str] | None) -> list[str]:
+    # 같은 캐릭터에 동일 별칭이 여러 번 들어오지 않도록 순서를 유지하며 중복 제거한다.
+    normalized: list[str] = []
+    seen: set[str] = set()
+    for alias in aliases or []:
+        value = alias.strip()
+        if not value or value in seen:
+            continue
+        normalized.append(value)
+        seen.add(value)
+    return normalized

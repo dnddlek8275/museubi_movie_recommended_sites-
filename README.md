@@ -121,6 +121,7 @@ python3 -m alembic upgrade head
 | `movies` | 영화 정보 |
 | `movie_genres` | 영화 장르 정규화 테이블 |
 | `characters` | 캐릭터 정보/프롬프트 |
+| `character_aliases` | `/chat/auto` 캐릭터 자동 매핑용 별칭 |
 | `user_movie_interactions` | 사용자 영화 행동 로그 |
 | `user_preference_scores` | 사용자 영화/캐릭터 취향 점수 |
 | `movie_stats` | 영화 랭킹 누적 통계 |
@@ -132,9 +133,11 @@ python3 -m alembic upgrade head
 
 - PostgreSQL 스키마/Alembic 마이그레이션
 - 영화 장르 정규화 테이블 `movie_genres`
+- 캐릭터 별칭 정규화 테이블 `character_aliases`
 - 사용자 생성/조회 service
 - Refresh Token 저장/검증/폐기 service
 - 영화/캐릭터 CRUD service
+- `/chat/auto`용 캐릭터 정식 이름/별칭 매핑 service
 - 영화 조회/검색 후 조회/좋아요 기록 service
 - 영화 검색 service
 - 영화 인기 랭킹 service
@@ -163,6 +166,17 @@ python3 -m alembic upgrade head
 | `search_text` | RDB에서는 사용하지 않으므로 저장하지 않음 |
 
 현재 CSV에는 있지만 아직 DB에 저장하지 않는 컬럼은 `media_type`, `original_title`, `release_date`, `runtime`, `popularity`, `search_text`다. `original_title`, `release_date`, `runtime`, `popularity`는 상세 화면이나 정렬 정책에서 필요해지면 별도 마이그레이션으로 추가한다.
+
+## 캐릭터 별칭 기준
+
+`/chat`, `/chat/group`처럼 캐릭터를 직접 지정하는 흐름은 정식 캐릭터명을 사용한다. `/chat/auto`처럼 자유 대화에서 캐릭터를 자동으로 찾는 흐름만 `character_aliases`를 사용한다.
+
+| 구분 | 저장 위치 | 설명 |
+| --- | --- | --- |
+| 정식 이름 | `characters.name` | API 요청/응답에서 기본으로 사용하는 캐릭터명 |
+| 별칭 | `character_aliases.alias` | 사용자 메시지에 언급된 이름을 정식 캐릭터로 매핑하기 위한 값 |
+
+별칭은 한 캐릭터에 여러 개 등록할 수 있다. 같은 별칭이 서로 다른 캐릭터에 연결되면 자동 매핑이 모호해지므로 DB에서 중복을 허용하지 않는다.
 
 ## 남은 범위
 

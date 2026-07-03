@@ -1,6 +1,6 @@
 from app.core.database import Base
 from app.models.admin import AdminAuditLog
-from app.models.character import Character
+from app.models.character import Character, CharacterAlias
 from app.models.chat import ChatMessage, ChatRoom
 from app.models.interaction import MovieStats, UserMovieInteraction, UserPreferenceScore
 from app.models.movie import Movie, MovieGenre
@@ -12,6 +12,7 @@ __all__ = [
     "AdminAuditLog",
     "Base",
     "Character",
+    "CharacterAlias",
     "ChatMessage",
     "ChatRoom",
     "Movie",

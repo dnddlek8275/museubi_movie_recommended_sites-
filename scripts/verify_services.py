@@ -9,12 +9,12 @@ from app.models.chat import ChatMessage
 from app.models.movie import Movie
 from app.schemas.auth import CreateRefreshToken
 from app.schemas.chat import CreateChatMessage, CreateChatRoom
-from app.schemas.character import CreateCharacter
+from app.schemas.character import CreateCharacter, UpdateCharacter
 from app.schemas.movie import CreateMovie
 from app.schemas.user import CreateUser
-from app.services.admin_service import create_character, create_movie, get_admin_stats
+from app.services.admin_service import create_character, create_movie, get_admin_stats, update_character
 from app.services.auth_service import create_refresh_token, revoke_refresh_token, verify_refresh_token
-from app.services.chat_service import create_chat_message, create_chat_room
+from app.services.chat_service import create_chat_message, create_chat_room, get_character_by_name_or_alias
 from app.services.interaction_service import record_movie_interaction, resolve_action_type
 from app.services.movie_search_service import search_movies
 from app.services.preference_service import list_user_preference_scores, update_user_character_preference_score
@@ -37,6 +37,7 @@ def main() -> None:
 
         record_demo_interactions(db, user_id=user.id, movie_id=movie.id)
         record_demo_character_preferences(db, user_id=user.id, character_id=character.id)
+        verify_demo_character_alias(db, character_name=character.name)
         verify_demo_refresh_token(db, user_id=user.id)
         recommendations = recommend_movies_for_user(
             db,
@@ -128,6 +129,7 @@ def get_or_create_demo_character(db, movie: Movie):
         )
     )
     if character is not None:
+        ensure_demo_character_aliases(db, character.id)
         return character
 
     return create_character(
@@ -137,11 +139,21 @@ def get_or_create_demo_character(db, movie: Movie):
             name="데모 캐릭터",
             movie_title=movie.title,
             actor="테스트 배우1",
+            aliases=["검증 캐릭터", "테스트 캐릭터"],
             lang="ko",
             system_prompt="너는 서비스 검증을 위한 데모 캐릭터다.",
             profile_image="/demo-character.jpg",
             is_active=True,
         ),
+    )
+
+
+def ensure_demo_character_aliases(db, character_id: int) -> None:
+    # 기존 데모 캐릭터를 재사용하는 경우에도 별칭 검증 데이터가 존재하도록 보정한다.
+    update_character(
+        db,
+        character_id,
+        UpdateCharacter(aliases=["검증 캐릭터", "테스트 캐릭터"]),
     )
 
 
@@ -184,6 +196,14 @@ def record_demo_character_preferences(db, *, user_id: int, character_id: int) ->
         character_id=character_id,
         action_type="chat",
     )
+
+
+def verify_demo_character_alias(db, *, character_name: str) -> None:
+    # /chat/auto에서 정식 이름과 별칭이 같은 캐릭터로 매핑되는지 확인한다.
+    by_name = get_character_by_name_or_alias(db, character_name)
+    by_alias = get_character_by_name_or_alias(db, "검증 캐릭터")
+    if by_name is None or by_alias is None or by_name.id != by_alias.id:
+        raise ServiceError("캐릭터 별칭 매핑 검증에 실패했습니다.", status_code=500)
 
 
 def verify_demo_refresh_token(db, *, user_id: int) -> None:

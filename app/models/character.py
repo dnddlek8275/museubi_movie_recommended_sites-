@@ -20,3 +20,30 @@ class Character(TimestampMixin, Base):
     is_active: Mapped[bool] = mapped_column(Boolean, default=True, server_default="true", nullable=False)
 
     movie = relationship("Movie")
+    alias_rows = relationship(
+        "CharacterAlias",
+        back_populates="character",
+        cascade="all, delete-orphan",
+        passive_deletes=True,
+    )
+
+    @property
+    def aliases(self) -> list[str]:
+        # Pydantic 응답에서는 별칭 row 객체 대신 문자열 목록으로 보여준다.
+        return [alias.alias for alias in self.alias_rows]
+
+
+class CharacterAlias(Base):
+    __tablename__ = "character_aliases"
+
+    id: Mapped[int] = mapped_column(BigInteger, primary_key=True)
+    character_id: Mapped[int] = mapped_column(
+        BigInteger,
+        ForeignKey("characters.id", ondelete="CASCADE"),
+        index=True,
+        nullable=False,
+    )
+    alias: Mapped[str] = mapped_column(String(100), unique=True, index=True, nullable=False)
+
+    # /chat/auto에서 별칭을 정식 캐릭터명으로 되돌릴 수 있도록 원본 캐릭터와 연결한다.
+    character = relationship("Character", back_populates="alias_rows")
