@@ -78,6 +78,7 @@ B1은 이 예외를 잡아서 팀 응답 규칙에 맞게 `failure` 응답으로
 | `auth_service.py` | `create_refresh_token`, `verify_refresh_token`, `revoke_refresh_token` |
 | `chat_service.py` | 채팅방/채팅 메시지 저장, LLM 추천 영화 JSON에 `movie_id` 매칭 후 snapshot 저장 |
 | `admin_service.py` | 영화/캐릭터 CRUD, 관리자 통계 |
+| `actor_service.py` | 배우 저장/갱신, 영화-배우 연결, 배우별 영화 조회 |
 | `interaction_service.py` | 영화 조회/검색 후 조회/좋아요 기록 |
 | `movie_search_service.py` | 영화 제목/개요/감독/배우/장르/키워드/언어 검색 |
 | `preference_service.py` | 영화/캐릭터 기반 사용자 취향 점수 조회/누적 |
@@ -120,6 +121,8 @@ python3 -m alembic upgrade head
 | `refresh_tokens` | Refresh Token hash 저장/검증/폐기 |
 | `movies` | 영화 정보 |
 | `movie_genres` | 영화 장르 정규화 테이블 |
+| `actors` | 배우 정보, TMDB 배우 ID, 프로필 이미지 경로 |
+| `movie_actors` | 영화-배우 N:M 연결, 배역명, 출연 순서 |
 | `characters` | 캐릭터 정보/프롬프트 |
 | `character_aliases` | `/chat/auto` 캐릭터 자동 매핑용 별칭 |
 | `user_movie_interactions` | 사용자 영화 행동 로그 |
@@ -133,6 +136,7 @@ python3 -m alembic upgrade head
 
 - PostgreSQL 스키마/Alembic 마이그레이션
 - 영화 장르 정규화 테이블 `movie_genres`
+- 배우 테이블 `actors`와 영화-배우 연결 테이블 `movie_actors`
 - 캐릭터 별칭 정규화 테이블 `character_aliases`
 - 사용자 생성/조회 service
 - Refresh Token 저장/검증/폐기 service
@@ -177,6 +181,25 @@ python3 -m alembic upgrade head
 | 별칭 | `character_aliases.alias` | 사용자 메시지에 언급된 이름을 정식 캐릭터로 매핑하기 위한 값 |
 
 별칭은 한 캐릭터에 여러 개 등록할 수 있다. 같은 별칭이 서로 다른 캐릭터에 연결되면 자동 매핑이 모호해지므로 DB에서 중복을 허용하지 않는다.
+
+
+## 배우 데이터 기준
+
+배우 프로필 이미지와 배우별 영화 모아보기 기능은 `actors`, `movie_actors`를 기준으로 처리한다. 기존 `movies.cast` 배열은 CSV 원본 호환용으로 유지하되, TMDB credits 동기화 후에는 정규화 테이블을 우선 사용한다.
+
+| 테이블 | 용도 | 주요 컬럼 |
+| --- | --- | --- |
+| `actors` | 배우 기본 정보 | `tmdb_actor_id`, `name`, `profile_path` |
+| `movie_actors` | 영화와 배우 연결 | `movie_id`, `actor_id`, `character_name`, `cast_order` |
+
+TMDB에서 배우 데이터를 가져올 때는 영화의 `tmdb_id` 기준으로 credits API를 호출하고, 응답의 배우 `id`, `name`, `profile_path`, `character`, `order`를 저장한다.
+
+```text
+actors.profile_path = /abc123.jpg
+프론트 이미지 URL = https://image.tmdb.org/t/p/w185 + profile_path
+```
+
+배우별 영화 모아보기는 외부 API를 매번 호출하지 않고, 내부 DB의 `movie_actors`와 `movies`를 조인해서 조회한다.
 
 ## 사용자 선호 데이터 기준
 

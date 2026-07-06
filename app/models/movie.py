@@ -36,6 +36,7 @@ class Movie(TimestampMixin, Base):
         cascade="all, delete-orphan",
         passive_deletes=True,
     )
+    actor_rows = relationship("MovieActor", back_populates="movie", cascade="all, delete-orphan", passive_deletes=True)
 
 
 class MovieGenre(Base):

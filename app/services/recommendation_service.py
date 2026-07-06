@@ -11,7 +11,7 @@ from app.models.movie import Movie
 from app.models.user import User
 from app.schemas.movie import ReadMovie
 from app.schemas.recommendation import RecommendedMovieRead
-from app.services.preference_service import get_movie_genre_values, normalize_values
+from app.services.preference_service import get_movie_actor_names, get_movie_genre_values, normalize_values
 
 PREFERENCE_WEIGHT = {
     # 취향 타입마다 영화 선택에 주는 영향이 달라 가중치를 분리한다.
@@ -124,7 +124,7 @@ def collect_recommendation_items(movie: Movie, character_names: list[str]) -> se
     # 영화 메타데이터를 사용자 취향 점수와 비교 가능한 key 집합으로 변환한다.
     items: set[tuple[str, str]] = set()
     items.update(("genre", value) for value in get_movie_genre_values(movie))
-    items.update(("actor", value) for value in normalize_values(movie.cast))
+    items.update(("actor", value) for value in get_movie_actor_names(movie))
     items.update(("keyword", value) for value in normalize_values(movie.keywords))
     items.update(("character", value) for value in normalize_values(character_names))
     if movie.director:

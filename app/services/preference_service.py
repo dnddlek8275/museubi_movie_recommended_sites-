@@ -147,7 +147,7 @@ def collect_movie_preference_items(movie: Movie) -> list[tuple[str, str]]:
     # 영화 메타데이터를 취향 축으로 바꿔 저장하면 추천 로직이 테이블 하나만 조회하면 된다.
     items: list[tuple[str, str]] = []
     items.extend(("genre", value) for value in get_movie_genre_values(movie))
-    items.extend(("actor", value) for value in normalize_values(movie.cast))
+    items.extend(("actor", value) for value in get_movie_actor_names(movie))
     items.extend(("keyword", value) for value in normalize_values(movie.keywords))
     if movie.director:
         items.append(("director", movie.director.strip()))
@@ -169,3 +169,11 @@ def get_movie_genre_values(movie: Movie) -> list[str]:
     if genre_rows:
         return normalize_values([row.genre for row in genre_rows])
     return normalize_values(movie.genres)
+
+
+def get_movie_actor_names(movie: Movie) -> list[str]:
+    # 배우는 정규화 테이블을 우선 사용하고, 기존 cast 배열은 TMDB credits 동기화 전 호환용으로만 사용한다.
+    actor_rows = getattr(movie, "actor_rows", None)
+    if actor_rows:
+        return normalize_values([row.actor.name for row in actor_rows if row.actor is not None])
+    return normalize_values(movie.cast)

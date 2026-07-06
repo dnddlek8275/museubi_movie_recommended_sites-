@@ -4,14 +4,17 @@ from sqlalchemy import select
 
 from app.core.database import SessionLocal
 from app.core.exceptions import ServiceError
+from app.models.actor import Actor
 from app.models.character import Character
 from app.models.chat import ChatMessage
 from app.models.movie import Movie
+from app.schemas.actor import CreateActor, CreateMovieActor
 from app.schemas.auth import CreateRefreshToken
 from app.schemas.chat import CreateChatMessage, CreateChatRoom
 from app.schemas.character import CreateCharacter, UpdateCharacter
 from app.schemas.movie import CreateMovie
 from app.schemas.user import CreateUser
+from app.services.actor_service import link_movie_actor, list_movies_by_actor, upsert_actor_from_tmdb
 from app.services.admin_service import create_character, create_movie, get_admin_stats, update_character
 from app.services.auth_service import create_refresh_token, revoke_refresh_token, verify_refresh_token
 from app.services.chat_service import create_chat_message, create_chat_room, get_character_by_name_or_alias
@@ -34,6 +37,7 @@ def main() -> None:
         user = get_or_create_demo_user(db)
         movie = get_or_create_demo_movie(db)
         character = get_or_create_demo_character(db, movie)
+        actor = get_or_create_demo_actor(db, movie)
 
         record_demo_interactions(db, user_id=user.id, movie_id=movie.id)
         record_demo_character_preferences(db, user_id=user.id, character_id=character.id)
@@ -56,6 +60,7 @@ def main() -> None:
             user_id=user.id,
             movie_id=movie.id,
             character_id=character.id,
+            actor_id=actor.id,
             chat_message_id=chat_message.id,
             ranking=list_top_movies(db, limit=5),
             preferences=list_user_preference_scores(db, user.id, limit=10),
@@ -66,6 +71,7 @@ def main() -> None:
                 limit=10,
             ),
             recommendations=recommendations,
+            actor_movies=list_movies_by_actor(db, actor.id, limit=5),
             recommended_movies_snapshot=chat_message.recommended_movies or [],
             search_results=search_movies(db, "드라마", limit=5),
             liked_movies=list_user_liked_movies(db, user.id, limit=5),
@@ -155,6 +161,28 @@ def ensure_demo_character_aliases(db, character_id: int) -> None:
         character_id,
         UpdateCharacter(aliases=["검증 캐릭터", "테스트 캐릭터"]),
     )
+
+
+def get_or_create_demo_actor(db, movie: Movie) -> Actor:
+    # TMDB credits 동기화 결과처럼 데모 배우를 만들고 데모 영화와 연결한다.
+    actor = upsert_actor_from_tmdb(
+        db,
+        CreateActor(
+            tmdb_actor_id=990101,
+            name="테스트 배우1",
+            profile_path="/demo-actor-profile.jpg",
+        ),
+    )
+    link_movie_actor(
+        db,
+        CreateMovieActor(
+            movie_id=movie.id,
+            actor_id=actor.id,
+            character_name="검증 배역",
+            cast_order=0,
+        ),
+    )
+    return actor
 
 
 def record_demo_interactions(db, *, user_id: int, movie_id: int) -> None:
@@ -286,11 +314,13 @@ def print_result(
     user_id: int,
     movie_id: int,
     character_id: int,
+    actor_id: int,
     chat_message_id: int,
     ranking: list[dict],
     preferences: list,
     character_preferences: list,
     recommendations: list[dict],
+    actor_movies: list[dict],
     recommended_movies_snapshot: list[dict],
     search_results: list[dict],
     liked_movies: list[dict],
@@ -299,7 +329,7 @@ def print_result(
 ) -> None:
     # 검증 결과를 터미널에서 빠르게 확인할 수 있게 핵심 값만 출력한다.
     print("service verification complete")
-    print(f"user_id={user_id}, movie_id={movie_id}, character_id={character_id}, chat_message_id={chat_message_id}")
+    print(f"user_id={user_id}, movie_id={movie_id}, character_id={character_id}, actor_id={actor_id}, chat_message_id={chat_message_id}")
     print(f"ranking_top={ranking[:3]}")
     print(
         "preferences_top="
@@ -327,6 +357,7 @@ def print_result(
         )
     )
     print(f"recommendations_top={recommendations[:3]}")
+    print(f"actor_movies_top={actor_movies[:3]}")
     print(f"recommended_movies_snapshot={recommended_movies_snapshot[:3]}")
     print(f"search_results_top={search_results[:3]}")
     print(f"liked_movies_count={len(liked_movies)}")

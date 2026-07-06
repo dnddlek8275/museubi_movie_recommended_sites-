@@ -2,10 +2,11 @@ from sqlalchemy import func, or_, select
 from sqlalchemy.orm import Session
 
 from app.core.exceptions import ServiceError
+from app.models.actor import Actor, MovieActor
 from app.models.movie import Movie, MovieGenre
 from app.schemas.movie import ReadMovie
 from app.schemas.search import MovieSearchResultRead
-from app.services.preference_service import get_movie_genre_values, normalize_values
+from app.services.preference_service import get_movie_actor_names, get_movie_genre_values, normalize_values
 
 SEARCH_FIELD_WEIGHT = {
     # 제목 매칭이 사용자의 의도와 가장 가까워 가장 높은 가중치를 준다.
@@ -48,6 +49,11 @@ def list_search_candidate_movies(db: Session, query: str, *, limit: int, skip: i
                 Movie.director.ilike(pattern),
                 Movie.language.ilike(pattern),
                 Movie.id.in_(select(MovieGenre.movie_id).where(MovieGenre.genre.ilike(pattern))),
+                Movie.id.in_(
+                    select(MovieActor.movie_id)
+                    .join(Actor, Actor.id == MovieActor.actor_id)
+                    .where(Actor.name.ilike(pattern))
+                ),
                 func.array_to_string(Movie.cast, " ").ilike(pattern),
                 func.array_to_string(Movie.keywords, " ").ilike(pattern),
             )
@@ -85,7 +91,7 @@ def collect_search_matches(movie: Movie, query: str) -> list[tuple[str, bool]]:
         ("director", contains_text(movie.director, query)),
         ("language", contains_text(movie.language, query)),
         ("genre", contains_any(get_movie_genre_values(movie), query)),
-        ("cast", contains_any(movie.cast, query)),
+        ("cast", contains_any(get_movie_actor_names(movie), query)),
         ("keyword", contains_any(movie.keywords, query)),
     ]
 
