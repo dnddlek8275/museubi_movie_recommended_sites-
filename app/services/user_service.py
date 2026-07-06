@@ -15,6 +15,7 @@ def create_user(db: Session, payload: CreateUser) -> User:
         email=payload.email,
         password_hash=payload.password_hash,
         nickname=payload.nickname,
+        profile_image=payload.profile_image,
         preferred_genres=payload.preferred_genres,
         preferred_actors=payload.preferred_actors,
         preferred_keywords=payload.preferred_keywords,

@@ -151,6 +151,9 @@ def update_character(db: Session, character_id: int, payload: UpdateCharacter) -
     for field, value in update_data.items():
         setattr(character, field, value)
     if aliases_was_sent:
+        # unique 별칭을 다시 저장할 때 insert가 delete보다 먼저 실행되지 않도록 기존 row를 먼저 제거한다.
+        character.alias_rows = []
+        db.flush()
         sync_character_aliases(character, aliases)
     try:
         db.commit()

@@ -17,6 +17,7 @@ class User(TimestampMixin, Base):
     email: Mapped[str] = mapped_column(String(255), unique=True, index=True, nullable=False)
     password_hash: Mapped[str] = mapped_column(String(255), nullable=False)
     nickname: Mapped[str] = mapped_column(String(50), nullable=False)
+    profile_image: Mapped[str | None] = mapped_column(String(300), nullable=True)
     preferred_genres: Mapped[list[str] | None] = mapped_column(ARRAY(String), nullable=True)
     preferred_actors: Mapped[list[str] | None] = mapped_column(ARRAY(String), nullable=True)
     preferred_keywords: Mapped[list[str] | None] = mapped_column(ARRAY(String), nullable=True)

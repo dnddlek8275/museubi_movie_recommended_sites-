@@ -5,6 +5,7 @@ class CreateUser(BaseModel):
     email: EmailStr
     password_hash: str
     nickname: str
+    profile_image: str | None = None
     preferred_genres: list[str] | None = None
     preferred_actors: list[str] | None = None
     preferred_keywords: list[str] | None = None
@@ -14,6 +15,7 @@ class CreateUser(BaseModel):
 class UpdateUser(BaseModel):
     password_hash: str | None = None
     nickname: str | None = None
+    profile_image: str | None = None
     preferred_genres: list[str] | None = None
     preferred_actors: list[str] | None = None
     preferred_keywords: list[str] | None = None
@@ -26,6 +28,7 @@ class ReadUser(BaseModel):
     id: int
     email: EmailStr
     nickname: str
+    profile_image: str | None
     preferred_genres: list[str] | None
     preferred_actors: list[str] | None
     preferred_keywords: list[str] | None

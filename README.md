@@ -116,7 +116,7 @@ python3 -m alembic upgrade head
 
 | 테이블 | 목적 |
 | --- | --- |
-| `users` | 사용자 기본 정보, 화면 표시용 초기 선호 목록 |
+| `users` | 사용자 기본 정보, 프로필 이미지 경로, 화면 표시용 초기 선호 목록 |
 | `refresh_tokens` | Refresh Token hash 저장/검증/폐기 |
 | `movies` | 영화 정보 |
 | `movie_genres` | 영화 장르 정규화 테이블 |
@@ -192,6 +192,18 @@ python3 -m alembic upgrade head
 `users.preferred_*`는 사용자가 직접 선택한 값을 보여주기 위한 프로필성 데이터다. `user_preference_scores`는 조회, 검색 후 조회, 좋아요, 캐릭터 선택/대화 같은 행동을 기반으로 누적되는 추천용 데이터다.
 
 두 데이터는 일부 값이 겹칠 수 있지만 목적이 다르므로 유지한다. 회원가입이나 취향 수정에서 `users.preferred_*`를 받는 경우, 추천에 즉시 반영하려면 같은 값을 `user_preference_scores`의 초기 점수로도 저장하는 방식을 사용할 수 있다.
+
+## 사용자 프로필 이미지 기준
+
+프로필 이미지 파일 자체는 DB에 저장하지 않는다. B1 또는 배포 서버의 파일 저장소에 이미지를 저장하고, `users.profile_image`에는 화면에서 다시 불러올 수 있는 상대경로 또는 storage key만 저장한다.
+
+예시:
+
+```text
+/uploads/users/1/profile_7f3a2c.jpg
+```
+
+값이 `NULL`이면 프론트에서 기본 프로필 이미지를 사용한다.
 
 ## 남은 범위
 
