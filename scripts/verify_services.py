@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta, timezone
+from datetime import date, datetime, timedelta, timezone
 
 from sqlalchemy import select
 
@@ -12,12 +12,14 @@ from app.schemas.actor import CreateActor, CreateMovieActor
 from app.schemas.auth import CreateRefreshToken
 from app.schemas.chat import CreateChatMessage, CreateChatRoom
 from app.schemas.character import CreateCharacter, UpdateCharacter
+from app.schemas.daily_recommendation import CreateDailyAiRecommendation
 from app.schemas.movie import CreateMovie
 from app.schemas.user import CreateUser
 from app.services.actor_service import link_movie_actor, list_movies_by_actor, upsert_actor_from_tmdb
 from app.services.admin_service import create_character, create_movie, get_admin_stats, update_character
 from app.services.auth_service import create_refresh_token, revoke_refresh_token, verify_refresh_token
 from app.services.chat_service import create_chat_message, create_chat_room, get_character_by_name_or_alias
+from app.services.daily_recommendation_service import replace_daily_ai_recommendation
 from app.services.interaction_service import record_movie_interaction, resolve_action_type
 from app.services.movie_search_service import search_movies
 from app.services.preference_service import list_user_preference_scores, update_user_character_preference_score
@@ -49,6 +51,7 @@ def main() -> None:
             limit=5,
             exclude_interacted=False,
         )
+        daily_recommendation = save_demo_daily_ai_recommendation(db, movie_id=movie.id)
         chat_message = save_demo_recommended_movies_message(
             db,
             user_id=user.id,
@@ -62,6 +65,7 @@ def main() -> None:
             character_id=character.id,
             actor_id=actor.id,
             chat_message_id=chat_message.id,
+            daily_recommendation=daily_recommendation,
             ranking=list_top_movies(db, limit=5),
             preferences=list_user_preference_scores(db, user.id, limit=10),
             character_preferences=list_user_preference_scores(
@@ -257,6 +261,18 @@ def verify_demo_refresh_token(db, *, user_id: int) -> None:
     print(f"refresh token verified: token_id={token.id}, revoked_at={revoked_token.revoked_at}")
 
 
+def save_demo_daily_ai_recommendation(db, *, movie_id: int) -> dict:
+    # AI 데일리 추천 한 문장과 추천 영화 연결 저장을 검증한다.
+    return replace_daily_ai_recommendation(
+        db,
+        CreateDailyAiRecommendation(
+            recommend_date=date.today(),
+            answer="오늘은 통쾌한 액션 한 편 어때요?",
+            movie_ids=[movie_id],
+        ),
+    )
+
+
 def save_demo_recommended_movies_message(
     db,
     *,
@@ -316,6 +332,7 @@ def print_result(
     character_id: int,
     actor_id: int,
     chat_message_id: int,
+    daily_recommendation: dict,
     ranking: list[dict],
     preferences: list,
     character_preferences: list,
@@ -357,6 +374,7 @@ def print_result(
         )
     )
     print(f"recommendations_top={recommendations[:3]}")
+    print(f"daily_recommendation={daily_recommendation}")
     print(f"actor_movies_top={actor_movies[:3]}")
     print(f"recommended_movies_snapshot={recommended_movies_snapshot[:3]}")
     print(f"search_results_top={search_results[:3]}")

@@ -83,6 +83,7 @@ B1은 이 예외를 잡아서 팀 응답 규칙에 맞게 `failure` 응답으로
 | `movie_search_service.py` | 영화 제목/개요/감독/배우/장르/키워드/언어 검색 |
 | `preference_service.py` | 영화/캐릭터 기반 사용자 취향 점수 조회/누적 |
 | `recommendation_service.py` | 사용자 취향 점수 기반 영화 추천, 비로그인 추천 placeholder |
+| `daily_recommendation_service.py` | AI 데일리 추천 한 문장/추천 영화 저장 및 조회 |
 | `ranking_service.py` | 인기 영화 랭킹 조회 |
 | `user_activity_service.py` | 마이페이지 좋아요/조회 기록 조회 |
 
@@ -123,6 +124,8 @@ python3 -m alembic upgrade head
 | `movie_genres` | 영화 장르 정규화 테이블 |
 | `actors` | 배우 정보, TMDB 배우 ID, 프로필 이미지 경로 |
 | `movie_actors` | 영화-배우 N:M 연결, 배역명, 출연 순서 |
+| `daily_ai_recommendations` | 날짜별 AI 추천 한 문장 묶음 |
+| `daily_ai_recommendation_movies` | 데일리 추천 묶음과 영화 연결, 표시 순서 |
 | `characters` | 캐릭터 정보/프롬프트 |
 | `character_aliases` | `/chat/auto` 캐릭터 자동 매핑용 별칭 |
 | `user_movie_interactions` | 사용자 영화 행동 로그 |
@@ -137,6 +140,7 @@ python3 -m alembic upgrade head
 - PostgreSQL 스키마/Alembic 마이그레이션
 - 영화 장르 정규화 테이블 `movie_genres`
 - 배우 테이블 `actors`와 영화-배우 연결 테이블 `movie_actors`
+- AI 데일리 추천 테이블 `daily_ai_recommendations`, `daily_ai_recommendation_movies`
 - 캐릭터 별칭 정규화 테이블 `character_aliases`
 - 사용자 생성/조회 service
 - Refresh Token 저장/검증/폐기 service
@@ -170,6 +174,27 @@ python3 -m alembic upgrade head
 | `search_text` | RDB에서는 사용하지 않으므로 저장하지 않음 |
 
 현재 CSV에는 있지만 아직 DB에 저장하지 않는 컬럼은 `media_type`, `original_title`, `release_date`, `runtime`, `popularity`, `search_text`다. `original_title`, `release_date`, `runtime`, `popularity`는 상세 화면이나 정렬 정책에서 필요해지면 별도 마이그레이션으로 추가한다.
+
+
+## AI 데일리 추천 기준
+
+AI가 하루 단위로 추천 문장과 영화 카드를 생성하면 `daily_ai_recommendations`에 추천 날짜와 한 문장을 저장하고, `daily_ai_recommendation_movies`에 추천 영화와 표시 순서를 저장한다. `updated_at`, `raw_response`, `created_at`은 연결 테이블에 두지 않는다.
+
+| 테이블 | 용도 | 주요 컬럼 |
+| --- | --- | --- |
+| `daily_ai_recommendations` | 하루 추천 묶음 | `recommend_date`, `answer`, `created_at` |
+| `daily_ai_recommendation_movies` | 추천 묶음 안의 영화 카드 | `daily_recommendation_id`, `movie_id`, `display_order` |
+
+AI가 TMDB ID를 응답하면 저장 전에 `movies.tmdb_id`로 내부 `movies.id`를 찾고, 연결 테이블에는 `movie_id`만 저장한다. 화면 조회 시에는 `movies`와 조인해서 포스터, 제목, 개요를 가져온다.
+
+제약조건:
+
+```text
+daily_ai_recommendations.recommend_date UNIQUE
+daily_ai_recommendation_movies PRIMARY KEY (daily_recommendation_id, movie_id)
+daily_ai_recommendation_movies UNIQUE (daily_recommendation_id, display_order)
+daily_ai_recommendation_movies.display_order BETWEEN 1 AND 3
+```
 
 ## 캐릭터 별칭 기준
 

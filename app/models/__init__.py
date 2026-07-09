@@ -3,6 +3,7 @@ from app.models.actor import Actor, MovieActor
 from app.models.admin import AdminAuditLog
 from app.models.character import Character, CharacterAlias
 from app.models.chat import ChatMessage, ChatRoom
+from app.models.daily_recommendation import DailyAiRecommendation, DailyAiRecommendationMovie
 from app.models.interaction import MovieStats, UserMovieInteraction, UserPreferenceScore
 from app.models.movie import Movie, MovieGenre
 from app.models.user import User, RefreshToken
@@ -17,6 +18,8 @@ __all__ = [
     "CharacterAlias",
     "ChatMessage",
     "ChatRoom",
+    "DailyAiRecommendation",
+    "DailyAiRecommendationMovie",
     "Movie",
     "MovieActor",
     "MovieGenre",
