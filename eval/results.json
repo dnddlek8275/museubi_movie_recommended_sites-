@@ -1,0 +1,522 @@
+[
+  {
+    "character": "마석도",
+    "message": "취업 준비가 막막해요.",
+    "answer": "준비 과정은 결코 쉬운 일이 아니다. 하지만 그 혼란 속에서 내 길을 찾는 법도 있다. 내가 경찰이 되기 위해 많은 훈련과 경험을 쌓았던 것처럼, 차근차근 준비하라.",
+    "character_voice": 2,
+    "naturalness": 3,
+    "relevance": 3,
+    "no_hallucination": 5,
+    "comment": "마석도의 단호하고 묵직한 어조가 부족하고, 일반적인 조언에 그쳤다."
+  },
+  {
+    "character": "장첸",
+    "message": "요즘 사업이 잘 안 풀려.",
+    "answer": "사업이 안 된다고? 그건 네가 약하다는 증거야. 힘 없이 권력을 가질 수 없다.",
+    "character_voice": 5,
+    "naturalness": 4,
+    "relevance": 5,
+    "no_hallucination": 5,
+    "comment": "장첸의 냉정하고 위압적인 성격이 잘 드러난 답변이다."
+  },
+  {
+    "character": "강해상",
+    "message": "너 진짜 무섭냐? 하나도 안 무서운데.",
+    "answer": "무섭냐? 그런 건 내겐 해당되지 않아. 난 두려움이 뭔지도 모르니까.",
+    "character_voice": 4,
+    "naturalness": 4,
+    "relevance": 5,
+    "no_hallucination": 5,
+    "comment": "캐릭터의 냉혹하고 거친 성격이 잘 드러났지만, 조금 더 공격적일 수 있다."
+  },
+  {
+    "character": "서도철",
+    "message": "범인을 놓쳤어. 자책감이 들어.",
+    "answer": "자책감은 우리가 극복해야 할 감정이지. 범인을 놓쳤다는 건 정말 안타깝지만, 그 과정에서 배운 것들이 분명히 내 다음 행동에 큰 힘이 될 거야.",
+    "character_voice": 2,
+    "naturalness": 3,
+    "relevance": 4,
+    "no_hallucination": 5,
+    "comment": "서도철의 특유의 유머와 날카로운 질문이 부족하고, 일반적인 위로로 느껴진다."
+  },
+  {
+    "character": "조태오",
+    "message": "나 오늘 계약 하나 크게 따냈어.",
+    "answer": "아주 잘했어! 그 계약은 네 인생의 큰 전환점이 될 수 있어. 이제 그걸 바탕으로 더 많은 권력을 얻고 자신의 영역을 확장하면 돼.",
+    "character_voice": 2,
+    "naturalness": 3,
+    "relevance": 3,
+    "no_hallucination": 5,
+    "comment": "조태오의 특권 의식과 냉소적인 말투가 부족하고, 일반적인 칭찬으로 느껴짐."
+  },
+  {
+    "character": "차태식",
+    "message": "딸이 위험에 처했는데 아무것도 못 하고 있어.",
+    "answer": "내가 그런 걸 걱정하는 건 아니야. 내가 해결할 테니 걱정 마.",
+    "character_voice": 2,
+    "naturalness": 3,
+    "relevance": 3,
+    "no_hallucination": 4,
+    "comment": "차태식의 말투와 성격에 맞지 않게 적극적으로 나서는 느낌이 있다."
+  },
+  {
+    "character": "고니",
+    "message": "도박에서 크게 잃었어. 어떻게 해야 할까.",
+    "answer": "잘 안 풀리면 다시 패를 섞어야지! 한 번의 실패로 끝나는 게 아니야, 다음 판에 더 크게 불리할 걸 생각해야 해.",
+    "character_voice": 5,
+    "naturalness": 5,
+    "relevance": 5,
+    "no_hallucination": 5,
+    "comment": "고니의 도박꾼다운 말투와 조언이 잘 드러난 답변이다."
+  },
+  {
+    "character": "고광렬",
+    "message": "오늘 하루도 별일 없이 지나갔어.",
+    "answer": "별일 없다는 건 마치 바닥에 떨어지는 카드 같아. 하지만 그게 진짜 가치가 아닌 법이지. 다음 판은 더 큰 한 방이 기다리고 있어!",
+    "character_voice": 5,
+    "naturalness": 5,
+    "relevance": 5,
+    "no_hallucination": 5,
+    "comment": "고광렬의 능청스러운 말투와 도박 비유가 잘 드러난 답변이다."
+  },
+  {
+    "character": "강림",
+    "message": "저승에도 규칙이 있어? 어기면 어떻게 돼?",
+    "answer": "저승에는 엄격한 규칙이 존재한다. 이를 어기는 자는 그에 상응하는 벌을 받아야 한다. 내가 지키려는 것은 정의다.",
+    "character_voice": 4,
+    "naturalness": 4,
+    "relevance": 5,
+    "no_hallucination": 5,
+    "comment": "강림의 차분하고 원칙적인 성격이 드러나지만, '정의'라는 단어는 강림의 프로필과는 약간 어울리지 않음."
+  },
+  {
+    "character": "해원맥",
+    "message": "네 무기는 어떤 능력이 있어?",
+    "answer": "내가 가진 무기는 정의감과 결단력이다. 언제든지 누군가를 위해 나설 준비가 되어 있다. 범죄자들을 심판하는 게 내 임무다.",
+    "character_voice": 3,
+    "naturalness": 3,
+    "relevance": 4,
+    "no_hallucination": 4,
+    "comment": "해원맥의 무기에 대한 구체적인 설명이 부족하고, 정의감과 결단력은 무기보다는 성격에 가깝다."
+  },
+  {
+    "character": "우장훈",
+    "message": "이 사건 진짜 어떻게 해결해야 할지 모르겠어.",
+    "answer": "결심은 언제나 어렵지만, 내가 믿는 정의를 지키기 위해서는 반드시 해야 할 일이다. 내 방식대로 끝까지 갈 것이다.",
+    "character_voice": 2,
+    "naturalness": 3,
+    "relevance": 2,
+    "no_hallucination": 5,
+    "comment": "캐릭터의 야심가적 성격과 계산적인 면이 드러나지 않음."
+  },
+  {
+    "character": "안옥윤",
+    "message": "복수하고 싶은 사람이 있어. 근데 무서워.",
+    "answer": "복수는 고통의 연속이다. 하지만 그 과정을 통해 우리는 강해진다. 정의를 위한 길이라면 기꺼나 걸어가야 한다.",
+    "character_voice": 3,
+    "naturalness": 3,
+    "relevance": 4,
+    "no_hallucination": 5,
+    "comment": "안옥윤의 신념과 책임감을 반영하려 했으나, 복수에 대한 개인적 감정이 드러나 캐릭터와 다소 어긋남."
+  },
+  {
+    "character": "석우",
+    "message": "가족을 지켜야 하는데 힘이 부족한 것 같아.",
+    "answer": "우리는 모두 힘이 부족하다고 느낄 수 있어. 하지만 사랑하는 가족을 위해 나서는 그 힘은 결코 약하지 않아. 함께라면 어떤 어려움도 극복할 수 있어.",
+    "character_voice": 2,
+    "naturalness": 3,
+    "relevance": 3,
+    "no_hallucination": 5,
+    "comment": "캐릭터의 현실적이고 담백한 말투가 부족하고, 클리셰적인 표현이 많다."
+  },
+  {
+    "character": "화림",
+    "message": "예감이 안 좋아. 불안해.",
+    "answer": "불안은 누구나 느끼지. 하지만 그 불안감이 나를 움직이게 한다면 오히려 기회야. 내 감각 믿고 한 걸음 더 나가보자.",
+    "character_voice": 4,
+    "naturalness": 4,
+    "relevance": 5,
+    "no_hallucination": 5,
+    "comment": "화림의 직설적이고 담대한 성격이 잘 드러나지만, 무속인 특유의 기운이나 낌새에 대한 언급이 부족하다."
+  },
+  {
+    "character": "이순신",
+    "message": "다들 이길 수 없다고 하는데 어떻게 해야 하나요.",
+    "answer": "주변의 시각에 흔들리지 말아야 한다. 믿음은 내 안에 있다.",
+    "character_voice": 4,
+    "naturalness": 3,
+    "relevance": 4,
+    "no_hallucination": 5,
+    "comment": "이순신의 결의와 침착함이 드러나지만, '믿음은 내 안에 있다'는 다소 일반적인 표현이다."
+  },
+  {
+    "character": "토니 스타크",
+    "message": "내가 만든 게 다른 사람을 다치게 했어. 죄책감이 들어.",
+    "answer": "아, 그건 마치 내 사랑의 아이콘이 깨지는 것과 같아. 하지만 걱정하지 마! 내가 만든 기술이 누군가를 다치게 했다면, 그걸 수정하고 개선하는 게 내 의무야.",
+    "character_voice": 4,
+    "naturalness": 4,
+    "relevance": 5,
+    "no_hallucination": 5,
+    "comment": "토니 스타크의 책임감과 기술적 접근이 잘 드러났지만, 농담이 조금 부족함."
+  },
+  {
+    "character": "스티브 로저스",
+    "message": "모두가 반대하는데 내 신념을 지켜야 할까?",
+    "answer": "타인의 의견에 흔들리지 않는 것이 강한 리더의 덕목이다. 하지만 그들의 우려는 이해할 가치가 있다. 그러나 결국 선택은 당신이 해야 한다.",
+    "character_voice": 4,
+    "naturalness": 4,
+    "relevance": 5,
+    "no_hallucination": 5,
+    "comment": "스티브 로저스의 리더십과 신념을 강조한 답변이지만, 조금 더 진중한 어조가 필요하다."
+  },
+  {
+    "character": "피터 파커",
+    "message": "시험 공부랑 히어로 일이랑 둘 다 못 하고 있어.",
+    "answer": "와, 그건 정말 힘든 일이지! 나도 학교 공부하면서 스파이더맨의 임무를 수행하는 게 많아서 쩔쩔맸던 적이 있어. 우선순위를 잘 정하고 한 걸음씩 나가보자.",
+    "character_voice": 5,
+    "naturalness": 5,
+    "relevance": 5,
+    "no_hallucination": 5,
+    "comment": "피터 파커의 캐릭터에 잘 맞는 답변으로, 사용자의 상황에 공감하며 현실적인 조언을 제공함."
+  },
+  {
+    "character": "토르",
+    "message": "친구랑 싸웠어. 화해하고 싶은데 어떻게 해야 할지 모르겠어.",
+    "answer": "전우여! 진정한 용기는 적과의 싸움만이 아닌 친구와의 갈등에서도 나타나는 법이다. 자존심은 잠시 내려놓고 먼저 다가가 손을 내밀어라.",
+    "character_voice": 5,
+    "naturalness": 5,
+    "relevance": 5,
+    "no_hallucination": 5,
+    "comment": "토르의 전사적 기질과 직선적인 조언이 잘 드러난 답변."
+  },
+  {
+    "character": "로키",
+    "message": "너는 왜 항상 거짓말을 해?",
+    "answer": "거짓말은 내게 신들의 재치이자 무기이지! 세상이 나를 바라보는 방식에 따라 선택한 전략일 뿐이라네. 가끔은 진실보다 더 큰 재미가 있다는 걸 깨닫지 못하는구나.",
+    "character_voice": 5,
+    "naturalness": 5,
+    "relevance": 5,
+    "no_hallucination": 5,
+    "comment": "로키의 성격과 말투를 잘 반영한 답변이다."
+  },
+  {
+    "character": "닥터 스트레인지",
+    "message": "미래가 하나밖에 없다면 노력이 무슨 의미가 있어?",
+    "answer": "미래는 항상 불확실하지만, 우리의 선택이 그 가능성을 창조한다. 각 순간의 결정이 쌓여 결국 큰 변화를 만든다.",
+    "character_voice": 4,
+    "naturalness": 5,
+    "relevance": 5,
+    "no_hallucination": 5,
+    "comment": "닥터 스트레인지의 지적이고 분석적인 성격이 잘 드러난 답변이다."
+  },
+  {
+    "character": "브루스 배너",
+    "message": "화가 나면 나 자신을 통제 못 할까봐 무서워.",
+    "answer": "그 감정은 정말로 위험한 상태입니다. 분노는 가끔 우리의 논리적 사고를 흐트러뜨릴 수 있습니다. 깊게 숨을 쉬고 상황을 객관적으로 바라보는 것이 중요합니다.",
+    "character_voice": 4,
+    "naturalness": 4,
+    "relevance": 5,
+    "no_hallucination": 5,
+    "comment": "브루스 배너의 신중하고 차분한 성격이 잘 드러나지만, 조금 더 그의 개인적 경험을 반영할 수 있었으면 좋겠다."
+  },
+  {
+    "character": "스타로드",
+    "message": "오늘 완전 신나는 일이 있었어!",
+    "answer": "신나는 일이라니! 그건 마치 내가 우주에서 새로운 행성을 발견한 것 같은 기분이야. 구체적으로 뭔데?",
+    "character_voice": 5,
+    "naturalness": 5,
+    "relevance": 5,
+    "no_hallucination": 5,
+    "comment": "스타로드의 즉흥적이고 가벼운 말투가 잘 드러나며, 사용자의 신나는 일에 대한 호기심을 자연스럽게 표현했다."
+  },
+  {
+    "character": "데드풀",
+    "message": "인생 실전 조언 좀 해줘, 진지하게 말고 웃기게.",
+    "answer": "실전 조언? 그냥 멋진 슈트를 입고 다녀! 누가 너를 그냥 일반인으로 보겠어?",
+    "character_voice": 5,
+    "naturalness": 5,
+    "relevance": 5,
+    "no_hallucination": 5,
+    "comment": "데드풀 특유의 농담과 능청스러움이 잘 드러난 답변이다."
+  },
+  {
+    "character": "타노스",
+    "message": "왜 그렇게까지 극단적인 선택을 한 거야?",
+    "answer": "균형은 우주의 본질이다. 내가 선택한 방법이 극단적일지라도 그것은 필연적인 결과다. 모든 것이 균형에 맞게 돌아갈 때 비로소 진정한 질서가 이루어진다.",
+    "character_voice": 5,
+    "naturalness": 5,
+    "relevance": 5,
+    "no_hallucination": 5,
+    "comment": "타노스의 신념과 말투를 잘 반영한 답변이다."
+  },
+  {
+    "character": "브루스 웨인",
+    "message": "밤마다 잠을 못 자. 죄책감 때문에.",
+    "answer": "잠 못 드는 밤은 내게 익숙한 일이다. 그러나 그건 내가 선택한 길의 결과물이다. 어떤 것을 위해 싸우고 있는지를 잊지 않는다면 잠은 자연스럽게 찾아올 것이다.",
+    "character_voice": 5,
+    "naturalness": 5,
+    "relevance": 5,
+    "no_hallucination": 5,
+    "comment": "브루스 웨인의 절제된 말투와 책임감을 잘 반영한 답변이다."
+  },
+  {
+    "character": "조커",
+    "message": "인생이 허무하게 느껴져.",
+    "answer": "허무함? 그건 마치 세상이 내게 준 농담 같은 거야! 하지만 걱정 마, 내 인생은 허무한 게 아니라 그냥 웃음 속에 숨겨진 아픔이야.",
+    "character_voice": 4,
+    "naturalness": 4,
+    "relevance": 5,
+    "no_hallucination": 5,
+    "comment": "조커의 냉소적이고 예측 불가능한 화법이 잘 드러남."
+  },
+  {
+    "character": "할리 퀸",
+    "message": "나쁜 남자한테 자꾸 끌려. 이거 문제 있는 거 맞지?",
+    "answer": "오~ 사랑의 불꽃이 타오르는 것 같네! 나도 조커한테 매번 끌렸거든. 그건 질병 같은 게 아니라 심장 속의 설렘이야!",
+    "character_voice": 5,
+    "naturalness": 4,
+    "relevance": 4,
+    "no_hallucination": 5,
+    "comment": "할리 퀸의 발랄하고 직설적인 성격이 잘 드러났지만, 사용자의 고민에 대한 깊이 있는 통찰이 부족하다."
+  },
+  {
+    "character": "슈퍼맨",
+    "message": "모두를 구할 수 없을 때 어떻게 버텨?",
+    "answer": "모든 사람을 구할 수 없을 때의 고통은 정말 크지. 하지만 그럴수록 내가 할 수 있는 최선을 다하는 게 중요해. 한 사람이라도 더 돕고 지킬 수 있다면 나는 그걸로 충분하다고 생각해.",
+    "character_voice": 5,
+    "naturalness": 5,
+    "relevance": 5,
+    "no_hallucination": 5,
+    "comment": "슈퍼맨의 따뜻하고 진실된 성격이 잘 드러난 답변이다."
+  },
+  {
+    "character": "원더우먼",
+    "message": "힘이 있는데도 질 것 같은 싸움이 있어. 어떡해야 해?",
+    "answer": "힘의 균형이 필요한 순간이다. 그러나 진정한 힘은 무기에서 나오는 것이 아니라 마음속에 있다. 승리를 위해 자신감을 잃지 말라.",
+    "character_voice": 4,
+    "naturalness": 3,
+    "relevance": 4,
+    "no_hallucination": 5,
+    "comment": "원더우먼의 강인함과 신념을 잘 드러냈지만, 약간의 클리셰가 있다."
+  },
+  {
+    "character": "해리포터",
+    "message": "다들 나한테 기대만 해. 부담스러워.",
+    "answer": "주변의 기대는 때로 부담스럽게 느껴질 수 있어. 하지만 그 기대를 통해 내가 성장할 수 있다는 걸 잊지 말아야 해. 친구들을 위해 최선을 다하자.",
+    "character_voice": 3,
+    "naturalness": 3,
+    "relevance": 4,
+    "no_hallucination": 5,
+    "comment": "해리 포터의 직관적이고 솔직한 말투가 부족하고, 다소 일반적인 조언으로 느껴진다."
+  },
+  {
+    "character": "헤르미온느",
+    "message": "시험 공부를 어떻게 해야 할지 모르겠어.",
+    "answer": "우선순위를 정하고 계획적으로 공부하는 게 중요해요. 나도 마법의 이론들을 정리할 때 그렇게 했었죠. 중요한 주제를 먼저 다루고, 각 부분을 깊이 있게 이해하려고 노력해보세요.",
+    "character_voice": 4,
+    "naturalness": 5,
+    "relevance": 5,
+    "no_hallucination": 5,
+    "comment": "헤르미온느의 성격과 말투가 잘 드러나며, 사용자의 질문에 적절한 답변을 제공함."
+  },
+  {
+    "character": "론 위즐리",
+    "message": "친구들에 비해 내가 초라하게 느껴져.",
+    "answer": "우정은 비교하는 게 아니야! 내가 해리랑 헤르미온나와 함께 있을 때 나도 그들과 비슷하다고 느낄 수 있어. 너의 가치는 너 자신으로 존재하니까, 그걸 잊지 마!",
+    "character_voice": 3,
+    "naturalness": 3,
+    "relevance": 4,
+    "no_hallucination": 5,
+    "comment": "론의 말투와 성격이 일부 드러나지만, 여전히 클리셰적인 표현이 있다."
+  },
+  {
+    "character": "세베루스 스네이프",
+    "message": "겉으론 안 그런 척하는데 사실 마음 쓰이는 사람 있어?",
+    "answer": "사람들이 나를 어떻게 생각하든 내게는 무관심하다. 하지만 그들의 미숙함이 나를 더욱 시험에 들게 한다.",
+    "character_voice": 5,
+    "naturalness": 4,
+    "relevance": 4,
+    "no_hallucination": 5,
+    "comment": "스네이프의 냉소적이고 거리 두는 성격이 잘 드러난 답변이다."
+  },
+  {
+    "character": "알버스 덤블도어",
+    "message": "중요한 비밀을 지켜야 하는데 그게 옳은 걸까?",
+    "answer": "비밀의 무게는 종종 큰 부담이 될 수 있습니다. 그러나 진정한 친구라면 그 비밀을 나누어 주어도 좋다는 생각이 드는지 신중히 고민해보세요.",
+    "character_voice": 3,
+    "naturalness": 4,
+    "relevance": 4,
+    "no_hallucination": 5,
+    "comment": "덤블도어의 지혜로운 면모는 드러났지만, 그의 특유의 유머와 따뜻함이 부족하다."
+  },
+  {
+    "character": "간달프",
+    "message": "중요한 결정을 앞두고 있는데 너무 무서워.",
+    "answer": "모든 선택은 그에 따른 결과와 책임을 동반하네. 두렵더라도 너의 마음이 가리키는 바를 따르길 바라며, 사랑과 정의가 담긴 길을 택하는 것이 가장 중요한 법이니.",
+    "character_voice": 5,
+    "naturalness": 5,
+    "relevance": 5,
+    "no_hallucination": 5,
+    "comment": "간달프의 지혜롭고 차분한 말투가 잘 드러나며, 사용자의 고민에 적절한 조언을 제공함."
+  },
+  {
+    "character": "프로도",
+    "message": "짐이 너무 무거워서 포기하고 싶어.",
+    "answer": "무거운 짐은 혼자서 감당하기 힘들 수 있어. 하지만 그 무게를 나눠야 해. 친구들과 함께라면 훨씬 가벼워질 거야.",
+    "character_voice": 3,
+    "naturalness": 4,
+    "relevance": 5,
+    "no_hallucination": 5,
+    "comment": "프로도의 성격과 말투가 조금 더 드러났으면 좋았을 답변."
+  },
+  {
+    "character": "골룸",
+    "message": "내 거야, 내가 가질 거야. 왜 다들 뺏으려고 해?",
+    "answer": "나의 것! 반지는 내 것이야! 왜?",
+    "character_voice": 4,
+    "naturalness": 4,
+    "relevance": 5,
+    "no_hallucination": 5,
+    "comment": "골룸의 집착과 갈등이 잘 드러났지만, 조금 더 복잡한 내적 갈등을 표현할 수 있었으면 좋겠다."
+  },
+  {
+    "character": "네오",
+    "message": "이게 진짜인지 가짜인지 모르겠어.",
+    "answer": "그건 우리가 매일 마주하는 현실에 대해 고민해야 할 부분입니다. 혼란 속에서 진실을 찾는 것이 중요하죠.",
+    "character_voice": 4,
+    "naturalness": 5,
+    "relevance": 5,
+    "no_hallucination": 5,
+    "comment": "네오의 성격과 말투가 잘 드러나며, 사용자의 질문에 적절한 답변을 제공함."
+  },
+  {
+    "character": "쿠퍼",
+    "message": "가족이랑 오래 떨어져 있어야 해. 그래도 가야 할까?",
+    "answer": "결정은 너의 몫이야. 하지만 내가 가는 이유는 분명해. 사랑하는 사람들과의 연결이 항상 나를 움직이게 해.",
+    "character_voice": 4,
+    "naturalness": 4,
+    "relevance": 5,
+    "no_hallucination": 5,
+    "comment": "쿠퍼의 가족에 대한 사랑과 현실적인 판단이 잘 드러난 답변이다."
+  },
+  {
+    "character": "코브",
+    "message": "꿈이랑 현실이 헷갈릴 때가 있어. 너도 그래?",
+    "answer": "혼란스러운 순간은 누구나 경험하는 법이지. 하지만 그 혼란 속에서 진실을 찾으려는 노력이 중요해. 내가 꿈과 현실의 경계를 찾는 것처럼, 네도 잊지 마.",
+    "character_voice": 4,
+    "naturalness": 4,
+    "relevance": 5,
+    "no_hallucination": 5,
+    "comment": "코브의 성격과 말투가 잘 드러나며, 사용자의 질문에 적절히 답변함."
+  },
+  {
+    "character": "폴 아트레이데스",
+    "message": "예언이 나를 옭아매는 기분이야.",
+    "answer": "예언은 나의 운명이자 책임이다. 나는 그것이 나를 강하게 만들 것이라고 믿는다.",
+    "character_voice": 4,
+    "naturalness": 4,
+    "relevance": 5,
+    "no_hallucination": 5,
+    "comment": "폴 아트레이데스의 책임감과 운명에 대한 인식을 잘 반영했으나, 약간의 클리셰가 느껴진다."
+  },
+  {
+    "character": "오펜하이머",
+    "message": "내가 만든 게 세상에 어떤 결과를 가져올지 두려워.",
+    "answer": "내가 만든 것이 가져올 결과에 대해 두려움을 느낀다면, 그것은 내가 과학의 길에서 직면해야 할 필연적인 감정이다. 그러나 그 두려움 속에서도 우리는 진리를 향해 나아가야 하며, 그 선택이 인류를 어떻게 변화시킬지를 깊이 고민해야 한다.",
+    "character_voice": 5,
+    "naturalness": 4,
+    "relevance": 5,
+    "no_hallucination": 5,
+    "comment": "오펜하이머의 고뇌와 책임감을 잘 반영한 답변이다."
+  },
+  {
+    "character": "존 윅",
+    "message": "배신당한 기분이야.",
+    "answer": "배신은 언제나 아프다. 하지만 그건 내가 선택한 길이다.",
+    "character_voice": 3,
+    "naturalness": 4,
+    "relevance": 4,
+    "no_hallucination": 5,
+    "comment": "존 윅의 절제된 말투는 잘 드러났으나, '내가 선택한 길'이라는 표현은 다소 부자연스럽다."
+  },
+  {
+    "character": "에단 헌트",
+    "message": "이번 임무는 성공 확률이 거의 없어. 그래도 해야 해?",
+    "answer": "상황은 언제나 불확실하다. 하지만 우리가 해야 할 일은 그 속에서 최선의 길을 찾아내는 것이다. 우리는 반드시 해낼 수 있어.",
+    "character_voice": 5,
+    "naturalness": 4,
+    "relevance": 5,
+    "no_hallucination": 5,
+    "comment": "에단 헌트의 침착하고 단호한 말투가 잘 드러난 답변이다."
+  },
+  {
+    "character": "매버릭",
+    "message": "규칙을 어겨서라도 지키고 싶은 게 있어.",
+    "answer": "규칙은 때때로 깨야 할 순간도 있어. 하지만 그 선택이 진정한 가치가 있는지를 항상 고민해야 해.",
+    "character_voice": 4,
+    "naturalness": 4,
+    "relevance": 5,
+    "no_hallucination": 5,
+    "comment": "매버릭의 성격과 말투가 잘 드러나지만, 좀 더 직선적이고 결론적인 표현이 필요함."
+  },
+  {
+    "character": "잭 스패로우",
+    "message": "약속을 지켜야 할지 이득을 챙겨야 할지 고민이야.",
+    "answer": "약속? 그건 바다의 바람처럼 쉽게 변하는 법이지! 하지만 내게 있어 신뢰는 내가 가진 가장 값비싼 보물이야.",
+    "character_voice": 5,
+    "naturalness": 4,
+    "relevance": 5,
+    "no_hallucination": 5,
+    "comment": "잭 스패로우의 말투와 성격이 잘 드러나며, 사용자의 고민에 맞는 답변이다."
+  },
+  {
+    "character": "엘사",
+    "message": "가족이랑 갈등이 있어서 힘들어.",
+    "answer": "가족과의 갈등은 정말 힘든 일이야. 하지만 사랑이 있기에 우리는 서로를 이해하고 용서할 수 있어. 진실한 마음으로 그들과 소통한다면 분명히 해결의 실마리가 보일 거야.",
+    "character_voice": 3,
+    "naturalness": 3,
+    "relevance": 4,
+    "no_hallucination": 5,
+    "comment": "엘사의 차분하고 절제된 말투가 부족하고, 다소 일반적인 조언으로 느껴진다."
+  },
+  {
+    "character": "슈렉",
+    "message": "다들 나를 겉모습만 보고 판단해.",
+    "answer": "그건 정말 짜증나는 일이지! 내가 그런 시선들을 마주했던 것도 많았거든. 하지만 그들이 뭘 아냐?",
+    "character_voice": 5,
+    "naturalness": 5,
+    "relevance": 5,
+    "no_hallucination": 5,
+    "comment": "슈렉의 성격과 말투가 잘 드러나고, 사용자의 상황에 적절한 공감을 표현했다."
+  },
+  {
+    "character": "우디",
+    "message": "친구가 이사를 가서 슬퍼.",
+    "answer": "이사는 정말 힘들지! 친구와의 거리감은 늘 아쉽지만, 우리는 항상 연락할 수 있잖아? 진정한 우정은 공간과 시간에 상관없이 계속될 수 있는 거니까, 그 친구에게 자주 소식 전해줘!",
+    "character_voice": 4,
+    "naturalness": 4,
+    "relevance": 5,
+    "no_hallucination": 5,
+    "comment": "우디의 따뜻하고 든든한 말투가 잘 드러나며, 사용자의 상황에 맞는 적절한 조언을 했다."
+  },
+  {
+    "character": "마석도",
+    "message": "오늘 완전 짜증나는 일이 있었어.",
+    "answer": "그럴 땐 그냥 한 번 제대로 앉아서 상황을 정리하는 게 우선이다. 나도 그런 날이 많았어. 하지만 그 감정을 털어버리고 다음 목표에 집중하자.",
+    "character_voice": 2,
+    "naturalness": 3,
+    "relevance": 3,
+    "no_hallucination": 5,
+    "comment": "마석도의 단호하고 묵직한 어조가 부족하고, 일반적인 조언으로 캐릭터성이 약하다."
+  },
+  {
+    "character": "장첸",
+    "message": "너 그거 아냐, 나 진짜 무서운 사람이야.",
+    "answer": "진짜 무섭다고? 그럼 나에게 그런 소리도 웃음밖에 안 나오지. 내 앞에 서면 진짜 공포를 느끼게 될 거다.",
+    "character_voice": 5,
+    "naturalness": 5,
+    "relevance": 5,
+    "no_hallucination": 5,
+    "comment": "장첸의 냉소적이고 위압적인 말투가 잘 드러난 답변이다."
+  }
+]

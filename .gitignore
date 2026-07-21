@@ -1,0 +1,16 @@
+.env
+venv/
+__pycache__/
+*.pyc
+logs/
+model/
+data/
+milvus/
+llama.cpp/
+*.gguf
+*.bin
+*.safetensors
+*.pt
+*.pth
+.ipynb_checkpoints/
+.DS_Store

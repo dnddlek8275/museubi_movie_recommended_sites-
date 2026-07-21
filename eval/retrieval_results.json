@@ -1,0 +1,446 @@
+{
+  "n_samples": 60,
+  "query_len_chars": 60,
+  "summary": {
+    "dense": {
+      "hit@1": 66.7,
+      "hit@3": 76.7,
+      "hit@10": 78.3,
+      "mrr": 0.721
+    },
+    "hybrid": {
+      "hit@1": 83.3,
+      "hit@3": 96.7,
+      "hit@10": 100.0,
+      "mrr": 0.898
+    },
+    "rerank": {
+      "hit@1": 100.0,
+      "hit@3": 100.0,
+      "hit@10": 100.0,
+      "mrr": 1.0
+    }
+  },
+  "per_query": [
+    {
+      "title": "인 굿 컴퍼니",
+      "query": "잘나가는 잡지 “스포츠 아메리카” 광고 이사 댄 포먼은 기업합병으로 인한 정리해고 위기에 놓이고, 새파랗게",
+      "dense": 1,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "배트맨 2",
+      "query": "배트맨은 고담시를 구하러 돌아와 이제까지 보지 못한 막강한 악당들과 대결하게 된다. 천재적인 두뇌를 가진",
+      "dense": 1,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "다키스트 아워",
+      "query": "끝나지 않는 전쟁으로 역사상 가장 어두웠던 시간으로 불리던 1940년, 독일이 프랑스 등 유럽국가를 차례로",
+      "dense": null,
+      "hybrid": 10,
+      "rerank": 1
+    },
+    {
+      "title": "Why Men Don't Listen and Women Can't Read Maps",
+      "query": "Jan is an absolute heartthrob and a diehard Hertha fan.",
+      "dense": 1,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "Oolong Courtyard: Kung Fu School",
+      "query": "Apprentices at the Oolong Courtyard school are suspicious",
+      "dense": null,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "Alien Terminator",
+      "query": "Five miles below the Earth's surface, a group of scientists",
+      "dense": 2,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "미이라 3: 황제의 무덤",
+      "query": "기원전 221년, 세계를 정복하려던 황제 한은 여사제의 저주에 묶여 미이라로 땅속에 묻힌다. 이후 2천년이",
+      "dense": 1,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "투스카니의 태양",
+      "query": "베스트 셀러 작가인 프란시스는 한 순간에 남편으로부터 이혼당하고, 집까지 빼앗긴다. 희망이라고는 눈꼽만치도",
+      "dense": 2,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "닌자 거북이 3: 어메이징 뮤턴트",
+      "query": "거북이들을 위해 여행선물로 골동품을 사온 에이프릴, 그 중에서 용도를 알 수 없는 물건이 있어 만지던 중",
+      "dense": 1,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "릴로 & 스티치",
+      "query": "하와이 섬에서 언니 나니와 함께 사는 외톨이 소녀 릴로는 엘비스 프레슬리의 노래를 즐기고 훌라춤을 추며",
+      "dense": null,
+      "hybrid": 3,
+      "rerank": 1
+    },
+    {
+      "title": "타임라인",
+      "query": "프랑스 라로크성의 유적발굴에 한창이던 존스톤 교수의 일행은 600년간 봉해져 있던 수도원을 발견한다.",
+      "dense": 1,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "21그램",
+      "query": "사랑의 무게는 얼마인가? 대학교수인 폴 리버스(숀 펜)는 죽음을 눈앞에 두고 심장 이식만을 기다리고 있다.",
+      "dense": null,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "Ms. Matched",
+      "query": "A successful wedding planner is trying to make dreams come",
+      "dense": 2,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "There's Only One Jimmy Grimble",
+      "query": "Jimmy Grimble is a shy Manchester school boy. At school he",
+      "dense": 1,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "Levels",
+      "query": "After witnessing his girlfriend's murder, a man risks",
+      "dense": null,
+      "hybrid": 2,
+      "rerank": 1
+    },
+    {
+      "title": "유나바머: 테드 K",
+      "query": "산속 작은 오두막에 은둔 생활을 하고 있는, 세상을 등진 천재 수학자 ‘존 카진스키’ 산업화와 산림개발",
+      "dense": null,
+      "hybrid": 2,
+      "rerank": 1
+    },
+    {
+      "title": "드래곤하트 2",
+      "query": "수도승인 피터가 용의 알을 수도원에 숨긴지 20년. 정의를 지키는 기사가 되는 것이 꿈인 적(크리스토퍼",
+      "dense": null,
+      "hybrid": 2,
+      "rerank": 1
+    },
+    {
+      "title": "가든 스테이트",
+      "query": "오래 전에 집을 떠났던 앤드류 라지맨이 어머니의 장례식에 참석하기 고향인 ‘가든스테이트’로 돌아온다. TV",
+      "dense": 1,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "휴먼 트래픽",
+      "query": "Jip, Lulu, Koop, Nina, 그리고 Moff에게 평일에 하는 보람 없는 일자리는 그저 금요일",
+      "dense": 1,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "스파이 키드: 아마겟돈",
+      "query": "스파이 슈트. 숨겨진 아지트. 끝내주게 멋진 장비. 부모님이 비밀 요원이라는 사실을 알게 된 패티와 토니.",
+      "dense": 2,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "윌러드",
+      "query": "소심한 성격으로 혼자만의 강박관념 속에 빠져 사는 윌러드는 정신이 온전치 못한 병든 노모와 함께 다 낡아",
+      "dense": 1,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "레드 드래곤",
+      "query": "‘이빨 요정(Tooth Fairy)’으로 불리는 연쇄 살인범이 매달 보름마다 가족들을 살해한다. 수사가",
+      "dense": 1,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "로스트 일루전",
+      "query": "프랑스의 작가 발자크의 소설 연작 <인간 희극> 중 주요 작품인 <잃어버린 환상>을 원작으로 하고 있다.\r",
+      "dense": 1,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "천사들이 꿈꾸는 세상",
+      "query": "이자는 스물 한 살. 커다란 배낭을 짊어지고 도시에서 도시로 떠돌아 다니며 틈틈이 자신이 만든 카드를 팔아",
+      "dense": null,
+      "hybrid": 3,
+      "rerank": 1
+    },
+    {
+      "title": "A Shoe Addict's Christmas",
+      "query": "As Christmas approaches, a department store worker whose",
+      "dense": 1,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "Rosenstrasse",
+      "query": "When Ruth's husband dies in New York, in 2000, she imposes",
+      "dense": null,
+      "hybrid": 3,
+      "rerank": 1
+    },
+    {
+      "title": "록 스탁 앤 투 스모킹 배럴즈",
+      "query": "베이컨(제이슨 스테덤), 소프(덱스터 플렛쳐), 톰(제이슨 플레밍)과 에디(닉 모란) 패거리는 포르노 거물",
+      "dense": 1,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "연애의 기술",
+      "query": "하비에와 페드로는 절친한 친구, 그러나 서로의 애인과 바람이 나면서, 두 사람은 각자 자신이 문제의 그",
+      "dense": 1,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "덴티스트",
+      "query": "LA 시내에 첨단 시설을 갖춘 치과의 원장인 앨런 파인스톤(Dr. Feinstone: 코빈 번슨 분).",
+      "dense": 1,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "리미츠 오브 컨트롤",
+      "query": "공항에 들어선 한 남자. 그를 기다리던 두 사람은 남자에게 성냥갑 하나를 건네고, 스페인에서의 끝을 알 수",
+      "dense": 1,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "대홍수",
+      "query": "스코틀랜드에서 발생한 허리케인 폭풍의 여파로 거대한 폭우와 파도가 점점 런던을 향해 다가온다. 그 규모는",
+      "dense": 1,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "해리 파괴하기",
+      "query": "해리는 베스트 셀러 작가이지만, 약 중독에다 매춘부를 가까이한다. 그는 자기 작품에서 주변 사람들을",
+      "dense": 1,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "추적",
+      "query": "무명배우 ‘틴들(주드 로)’은 유명 추리 소설작가 ‘앤드류(마이클 케인)’를 찾아가 ‘앤드류’의 부인을",
+      "dense": 1,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "Execution of Justice",
+      "query": "The true story of the assassination of San Francisco Mayor",
+      "dense": 1,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "라이크 어 보스",
+      "query": "정 반대 성격의 멜(로즈 번)과 미아(티파니 해디쉬)는 의기투합하여 신생 화장품 회사를 설립하지만",
+      "dense": null,
+      "hybrid": 2,
+      "rerank": 1
+    },
+    {
+      "title": "미트 페어런츠",
+      "query": "간호사 그렉(벤 스틸러)는 애인 팸(테리 폴로)에게 프로포즈를 결심하고 팸의 여동생 결혼식에 참석하기 위해",
+      "dense": 1,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "개 같은 나날",
+      "query": "베니스 영화제 심사위원 대상 수상.  비엔나 외곽의 한 시골마을을 무대삼아 스트레스에 가득 찬 세일즈맨,",
+      "dense": null,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "타임 투 킬",
+      "query": "미국 남부 미시시피주의 작은 도시. 백주 대낮에 흑인 소녀가 술과 마약에 찌든 백인 건달 두 명에게 무참히",
+      "dense": 1,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "Rough Air: Danger on Flight 534",
+      "query": "Having taken the blame for an accident beyond his control,",
+      "dense": 2,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "노 맨스 랜드",
+      "query": "한치 앞도 보이지 않는 짙푸른 안개를 뚫고 ‘치키’를 비롯한 보스니아 순찰대가 걸어온다. 세르비아군의",
+      "dense": 1,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "제인 오스틴 북 클럽",
+      "query": "어느날 다른 여자를 사랑하게 되었다며 이혼을 요구하는 남편때문에 우울증에 걸린 '실비아'를 위해, 조셀린과",
+      "dense": 1,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "캐치 미 이프 유 캔",
+      "query": "1965년, FBI를 발칵 뒤집는 사건이 발생한다. 파일럿을 가장해 모든 비행기에 무임승차는 기본, 50개",
+      "dense": 1,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "천사의 몰락, 평화의 전사들",
+      "query": "이라크 전쟁 참전 용사가 신의 부름을 받게 되면서, 그는 타락한 천사가 죽은 자들의 군대를 일으켜 세상을",
+      "dense": 1,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "You're in the Super Bowl, Charlie Brown!",
+      "query": "The Peanuts Gang competes in a punt, pass and kick contest.",
+      "dense": 1,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "애딕티드 러브",
+      "query": "샘(매튜 브로데릭)은 미국 중서부 작은 마을에서 일하는 천문학자로서 사랑하는 연인 린다와 곧 결혼할",
+      "dense": 1,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "저스트 라이크 헤븐",
+      "query": "만사가 시큰둥한 우울한 정원사 데이빗(마크 러팔로 분). 어렵게 고른 아파트로 이사 온 첫날 밤, 새 집에",
+      "dense": 1,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "도터 오브 울프",
+      "query": "집에 돌아온 ‘클레어’는 이상한 기운을 감지한다. 엉망이 되어 있는 집, 그리고 보이지 않는 아들. 그리고",
+      "dense": 2,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "리치 리치",
+      "query": "백억 달러 리치 벌가의 유일한 상속인 리치는 세상 남부러울 것 하나 없는 아이다.리치의 재산과 행복은",
+      "dense": 1,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "나이팅게일",
+      "query": "호주 태즈메이니아의 마을. 아름다운 노랫소리로 나이팅게일이라 불리는 클레어는 어느 날, 폭주한 영국군 장교",
+      "dense": 1,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "Forbidden Fruits",
+      "query": "Free Eden employee Apple secretly runs a witchy femme cult",
+      "dense": null,
+      "hybrid": 4,
+      "rerank": 1
+    },
+    {
+      "title": "머스킷티어",
+      "query": "D' Artagnan은 국토의 Gascony를 두 가지 목표로 떠난다. 왕의 총사에 합류하고 14 년 전에",
+      "dense": 1,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "약한 녀석들",
+      "query": "파리의 떨거지 대마 딜러 에디와 코크맨. 에디의 섹시한 동생이 이 바닥 거물과 결혼한단 소식에 인생 역전을",
+      "dense": null,
+      "hybrid": 2,
+      "rerank": 1
+    },
+    {
+      "title": "바벨",
+      "query": "아이를 잃고 실의에 빠진 아내를 위로하기 위해 모로코로 여행 온 미국인 부부 리처드(브래드 피트)와",
+      "dense": 1,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "펄프 픽션",
+      "query": "펌프킨와 허니 버니가 레스토랑에서 강도 행각을 벌이기 시작한다. 빈센트와 그 동료 쥴스는 두목의 금가방을",
+      "dense": 1,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "Guilty as Sin",
+      "query": "Before a criminal lawyer knows what has happened, she is",
+      "dense": 4,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "프라이스리스",
+      "query": "이렌느 돈 많은 남자와 결혼하여 행복한 인생을 살고 싶은 소박한(?) 꿈을 가진 사랑스러운 작업녀. 오늘도",
+      "dense": 1,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "천년을 흐르는 사랑",
+      "query": "16세기 스페인, 충실한 기사 토마스(휴 잭맨)는 적으로부터 아름다운 여왕 이자벨(레이첼 와이즈)을 구하기",
+      "dense": 1,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "사흘",
+      "query": "흉부외과의사 승도의 딸 소미가 구마의식 도중 목숨을 잃고 장례식장에서 승도는 죽은 딸의 목소리를 듣게",
+      "dense": 1,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "사이더 하우스",
+      "query": "1943년 대공항기의 미국 메인 주. 호머 웰즈(토비 맥과이어)는 어릴 때 부모에게 버림 받고 세인트",
+      "dense": 1,
+      "hybrid": 1,
+      "rerank": 1
+    },
+    {
+      "title": "임포턴스 오브 비잉 어니스트",
+      "query": "주인공 잭은 부모가 누구인지 모르고 출생신분도 확실치 않지만 신랑감으로서 좋은 조건을 갖춘 총각이다.",
+      "dense": 1,
+      "hybrid": 1,
+      "rerank": 1
+    }
+  ]
+}
